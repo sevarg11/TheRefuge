@@ -1,0 +1,132 @@
+select{
+	width: 35%;
+}
+
+p#label
+{
+	margin-left: -85px;
+}
+
+p#notFound
+{
+	color: #5D3E3C;
+}
+
+.highlight
+{
+	color: #d85700;
+}
+
+#checkinTitle
+{
+	margin: 100px auto 0px;
+	background-color: #394250;
+	padding: 15px 10px;
+	width: 445px;
+	font-family: "Book Antiqua", Palatino, Georgia, serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#checkinAreaStart
+{
+	width: 465px; 
+	height: 165px;
+	padding-top: 50px;
+	margin: 0px auto 100px;
+	text-align:center;
+	background-color: #66707F; 
+}
+
+#checkinAreaConfirm
+{
+	width: 465px; 
+	height: 375px;
+	padding-top: 50px;
+	margin: 0px auto 60px;
+	text-align:center;
+	background-color: #66707F; 
+}
+
+#checkinAreaConfirm a
+{
+	margin-top: 25px;
+	margin-left: 20px;
+	border: 0;
+	border-radius: 2px;
+	outline: 0;
+	background: #C65200;
+	box-shadow: 1px 0px 1px #9F4B21,0px 1px 1px #5D3E3C,2px 1px 1px #9F4B21,1px 2px 1px #5D3E3C,3px 2px 1px #9F4B21,2px 3px 1px #5D3E3C,4px 3px 1px #9F4B21,3px 4px 1px #5D3E3C,5px 4px 1px #9F4B21,4px 5px 1px #5D3E3C,6px 5px 1px #9F4B21;
+	color: white;
+	white-space: nowrap;
+	padding: 8.5px 16px;
+}
+
+#checkinAreaError
+{
+	width: 465px; 
+	height: 130px;
+	padding-top: 50px;
+	margin: 0px auto;
+	text-align:center;
+	background-color: #66707F; 
+}
+
+#checkinPoints
+{
+	margin-left: 15px;
+	width: 70px;
+}
+
+#checkinImage
+{
+	margin-bottom: 15px;
+	border: 4px solid #394250;
+}
+
+
+/* Check In History */
+#checkinAreaHistory
+{
+	width: 465px;
+	padding-top: 15px;
+	padding-bottom: 35px;
+	margin: 0px auto 60px;
+	text-align:center;
+	background-color: #66707F; 
+}
+
+#checkinAreaHistory h1
+{
+	padding: 0;
+	margin: 0 0 10px 20px;
+	text-align: left;
+	font-weight: normal;
+}
+
+#checkinAreaHistory table
+{
+	margin-left: 20px;
+	padding-bottom: 10px;
+}
+
+#checkinAreaHistory th
+{
+	color: #d85700;
+}
+
+#checkinAreaHistory td:first-child, th:first-child
+{
+	width: 50px;
+	text-align: left;
+	font-weight: normal;
+}
+
+#checkinAreaHistory td:nth-child(2), th:nth-child(2)
+{
+	text-align: left;
+	font-weight: normal;
+}
+
+
+

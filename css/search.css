@@ -1,0 +1,130 @@
+input[type="text"]
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p#error
+{
+	margin-top: 15px;
+}
+
+.searchResultsMain p {
+	color: #A5AAB0;
+}
+
+.searchMain
+{
+	width: 430px;
+	height: 170px;
+	margin: 0 auto 100px;
+	padding: 20px;
+
+	text-align:center;
+	background-color: #66707F; 
+}
+
+#searchTitle
+{
+	width: 450px;
+	margin: 100px auto 0px;
+	padding: 15px 10px;
+	background-color: #394250;
+	font-family: "Book Antiqua", Palatino, Georgia, serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#searchResultsTitle
+{
+	width: 720px;
+	margin: 100px auto 0px;
+	padding: 15px 10px;
+	background-color: #394250;
+	font-family: "Book Antiqua", Palatino, Georgia, serif;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.searchResultsMain
+{
+	width: 700px;
+	margin: 0 auto 100px;
+	background-color: #66707F;
+	padding: 20px;
+}
+
+#searchResultsImage
+{
+	float:right;
+	margin: 45px 40px 0px 0px;
+	border: 7px solid #394250;
+}
+
+.searchResultsTable td
+{
+	width:90px;
+}
+
+.searchResultsTable tr
+{
+	height:20px;
+}
+
+#searchResultsButtons
+{
+	width: 40%;
+	margin: 30px auto 25px;
+}
+
+#searchResultsButtons a
+{
+	margin-left: 20px;
+	border: 0;
+	border-radius: 2px;
+	outline: 0;
+	background: #C65200;
+	box-shadow: 1px 0px 1px #9F4B21,0px 1px 1px #5D3E3C,2px 1px 1px #9F4B21,1px 2px 1px #5D3E3C,3px 2px 1px #9F4B21,2px 3px 1px #5D3E3C,4px 3px 1px #9F4B21,3px 4px 1px #5D3E3C,5px 4px 1px #9F4B21,4px 5px 1px #5D3E3C,6px 5px 1px #9F4B21;
+	color: white;
+	white-space: nowrap;
+	padding: 8.5px 16px;
+}
+
+#searchResultsButtons a:hover
+{
+	margin-left:20px;
+	border: 0;
+	border-radius: 2px;
+	outline: 0;
+	background: #4D2F2D;
+	box-shadow: 1px 0px 1px #5D3E3C,0px 1px 1px #89472B,2px 1px 1px #5D3E3C,1px 2px 1px #89472B,3px 2px 1px #5D3E3C,2px 3px 1px #89472B,4px 3px 1px #5D3E3C,3px 4px 1px #89472B,5px 4px 1px #5D3E3C,4px 5px 1px #89472B,6px 5px 1px #5D3E3C;
+	color: white;
+	white-space: nowrap;
+	padding: 9px 16px;
+	text-decoration:none;
+}
+
+.needToFillOut
+{
+	color: #EB4D41;
+}
+
+form
+{
+	margin-top: 20px;
+}
+
+.edit
+{
+	background-image: url('../images/pencil.png');
+	background-position: 0 0;
+	background-size: 15px 15px;
+	float: left;
+	height: 15px;
+	width: 15px;
+}
+
+td.first{
+	width: 20px;
+}

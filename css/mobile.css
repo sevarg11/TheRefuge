@@ -1,0 +1,50 @@
+.ui-header, .ui-footer
+{
+	text-align: center;
+}
+
+.ui-footer
+{
+	background: none;
+	border: none;
+	text-decoration: none;
+}
+
+
+p
+{
+	text-align: center;
+}
+
+p img
+{
+	border: 2px solid #C45217;
+	border-radius: 2px;
+}
+
+.error
+{
+	color: #C45217;
+}
+
+#popup
+{
+	background: #CF3A43;
+}
+
+.highlight
+{
+	color: #d85700
+}
+
+
+footer{
+	font-size: 12px;
+	font-weight: 100;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+a{
+	text-decoration: none;
+}
