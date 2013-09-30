@@ -1,4 +1,4 @@
-<?php session_start(); // Resume session
+<?php session_start()   ; // Resume session
 
 /************************************************************************
  * Author:
