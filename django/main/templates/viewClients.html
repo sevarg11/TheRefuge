@@ -1,0 +1,32 @@
+{% extends "base.template.html" %}
+{% block title %}The Refuge Youth Center{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>  
+        <tr>  
+            <th>Last</th>  
+            <th>First</th>
+            <th>Email</th>
+        </tr>  
+    </thead>
+    <tbody>
+
+    {% for client in clients %}
+        <tr>
+            <td>{{client.lastName}}</td>  
+            <td>{{client.firstName}}</td>
+            <td>{{client.email}}</td>
+        </tr>
+
+    {% empty %}
+        <tr>
+            <td>None</td>  
+            <td>None</td>
+            <td>None</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>  
+</table>
+{% endblock %}
