@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="/img/small-icon.png">
 
-    <title>Fixed Top Navbar Example for Bootstrap</title>
+    <title>{% block title %}The Refuge Youth Center{% endblock %}</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -23,9 +23,10 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/main.css" rel="stylesheet">
+    {% block head %}{% endblock %}
   </head>
 
-  <body >
+  <body>
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
@@ -36,33 +37,50 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a style="position:relative; bottom:5px;"class="navbar-brand" href="#"><img style="position:relative; bottom:5px; width:30px;" src="../img/small-icon.png">The Refuge</a>
+          <a style="position:relative; bottom:5px;"class="navbar-brand" href="/"><img style="position:relative; bottom:5px; width:30px;" src="/img/small-icon.png">The Refuge</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            {% if user.is_authenticated %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Clients<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/clients/">View</a></li>
+                <li><a href="/client/add/">Add</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Teams<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/teams/">View</a></li>
+                <li><a href="/team/create/">Create</a></li>
+              </ul>
+            </li>
+            {% else %}
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-            <li><a class="btn btn-primary" href="/logout">Logout {{ user.username }}</a></li>
+            <li><a class="" href="/logout">Logout {{ user.username }}</a></li>
             {% else %}
-            <li><a class="btn btn-primary" href="/login">Login</a></li>
+            <li><a class="" href="/login">Login</a></li>
             {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <!-- Sub navigation bar -->
 
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      
         {% block content %}{% endblock %}
-      </div>
 
     </div> <!-- /container -->
 
   </body>
+  {% block foot %}{% endblock %}
 </html>

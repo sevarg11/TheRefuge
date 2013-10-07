@@ -2,20 +2,74 @@ body{
 	background-image:url('../img/lines.jpg');
 	background-repeat:no-repeat;
 	background-color: #1f2839;
+	padding-top: 50px;
 }
 
-.jumbotron{
+a{	/* Change link colors */
+	color:#333; 
+}
+
+a:hover{	/* Change link hover color*/
+	color:#333;
+	text-decoration: none;
+}
+
+.table-hover>tbody>tr:hover>td{	/*Change the table hover color */
+	background-color: #ffd47f;
+	cursor:pointer;
+}
+
+.mainContent {
 	background-color:#dfe4ee;
-	margin-top: 100px;
+	padding-bottom: 100px;
 }
 
-.navbar{
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#fff),to(#dfe4ee));
-background-image: -webkit-linear-gradient(top,#fff,0%,#dfe4ee,100%);
-background-image: -moz-linear-gradient(top,#fff 0,#dfe4ee 100%);
-background-image: linear-gradient(to bottom,#fff 0,#dfe4ee 100%);
-background-repeat: repeat-x;
-max-height:35px;
+.navbar {
+	background-image: -webkit-gradient(linear,left 0,left 100%,from(#161d29),to(#0d1118));
+	background-image: -webkit-linear-gradient(top,#161d29,0%,#0d1118,100%);
+	background-image: -moz-linear-gradient(top,#161d29 0,#0d1118 100%);
+	background-image: linear-gradient(to bottom,#161d29 0,#0d1118 100%);
+	background-repeat: repeat-x;
+	max-height:35px;
 }
 
+.navbar-default {
+	background-color: #161d29;
+	border-color: #161d29;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #758db5;
+}
+
+.navbar-brand, .navbar-nav>li>a {
+	text-shadow: 0 0px 0 rgba(255,255,255,0.25);
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+	color: #e7e7e7;
+}
+
+.navbar-brand, .navbar-nav>li>a:hover {
+	text-shadow: 0 0px 0 rgba(255,255,255,0.25);
+}
+
+.navbar-default .navbar-brand {
+	color: #758db5;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #e7e7e7;
+}
+
+
+.btn-warning {
+	background-image: -webkit-gradient(linear,left 0,left 100%,from(#fe680f),to(#d95101));
+	background-image: -webkit-linear-gradient(top,#fe680f,0%,#d95101,100%);
+	background-image: -moz-linear-gradient(top,#fe680f 0,#d95101 100%);
+	background-image: linear-gradient(to bottom,#fe680f 0,#d95101 100%);
+	background-repeat: repeat-x;
+	border-color: #c04801;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe680f',endColorstr='#d95101',GradientType=0);
+}
 

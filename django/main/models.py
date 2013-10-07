@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Client(models.Model):
     firstName = models.CharField(max_length=50)
-    middleName = models.CharField(max_length=50)
+    middleName = models.CharField(max_length=50, blank=True)
     lastName = models.CharField(max_length=50)
     dateOfBirth = models.DateField()
     address = models.ForeignKey('Address')
@@ -43,6 +44,7 @@ class State(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=200)
+    dateCreated = models.DateTimeField()
     members = models.ManyToManyField('Client')
 
     def __unicode__(self):
@@ -59,4 +61,9 @@ class Record(models.Model):
     name = models.CharField(max_length=200)
     points = models.IntegerField()
     date = models.DateTimeField()
-    members = models.ManyToManyField('Client')
+    members = models.ManyToManyField('Client', related_name='members')
+    completedBy = models.ForeignKey('Client', related_name='completedBy')
+    submittedBy = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.name

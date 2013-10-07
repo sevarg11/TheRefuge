@@ -1,0 +1,12 @@
+{% extends "base.template.html" %}
+{% load crispy_forms_tags %}
+{% block title %}CheckIn Client - The Refuge{% endblock %}
+
+{% block content %}
+<div class="row mainContent">
+    <div class="col-sm-12 col-md-12">
+		<h2>Check In: {{client.firstName}} {{client.lastName}}</h2>
+	    {% crispy form %}
+	</div>
+</div>
+{% endblock %}

@@ -1,2 +1,2 @@
-The Refuge Administration System
--Django
+The Refuge Youth Center Administration System
+

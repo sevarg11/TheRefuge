@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Thomas Barton', 'thomasryanbarton@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -128,7 +128,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'main',
     'south',
+    'crispy_forms',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
