@@ -30,8 +30,7 @@ def calculateClientPoints(theClient):
 
 def calculateTeamPoints(theTeam):
     pointTotal = 0
-    theMembers = theTeam.members.all()
-    theRecords = Record.objects.filter(members__in=theMembers).distinct()
+    theRecords = Record.objects.filter(teams__id=theTeam.id).distinct()
 
     for aRecord in theRecords:
         pointTotal = pointTotal + aRecord.points
@@ -40,7 +39,7 @@ def calculateTeamPoints(theTeam):
 
 def index(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect("/clients")
+        return HttpResponseRedirect("/clients/")
 
     context = {
         #'form': form,
@@ -66,7 +65,7 @@ def login(request):
                     return HttpResponseRedirect("/")
                 else:
                     # Return a 'disabled account' error message
-                    return HttpResponseRedirect("/login")
+                    return HttpResponseRedirect("/login/")
     else:
         form = auth.forms.AuthenticationForm(request)
 
@@ -191,7 +190,7 @@ def clientCheckin(request, client_id):
             if len(theRecordType)==1:
                 theRecordType = theRecordType[0]
 
-                theTeams = Team.objects.filter(members=theClient)
+                theTeams = Team.objects.filter(members=theClient).filter(active=True)
 
                 aRecord = Record()
                 aRecord.name = theRecordType.name
@@ -200,11 +199,8 @@ def clientCheckin(request, client_id):
                 aRecord.completedBy = theClient
                 aRecord.submittedBy = request.user
                 aRecord.save()
-                aRecord.members.add(theClient)
                 for aTeam in theTeams:
-                    theMembers = aTeam.members.all()
-                    for aMember in theMembers:
-                        aRecord.members.add(aMember)
+                    aRecord.teams.add(aTeam)
                         
             return HttpResponseRedirect('/clients/') # Redirect after POST
     else:
@@ -221,7 +217,7 @@ def viewTeams(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/")
 
-    theTeams = Team.objects.all().order_by('name')
+    theTeams = Team.objects.filter(active=True).order_by('name')
 
     for aTeam in theTeams:
         aTeam.numMembers = aTeam.members.all().count()
@@ -244,8 +240,9 @@ def createTeam(request):
             aTeam = Team()
             aTeam.name = theName
             aTeam.dateCreated = datetime.datetime.utcnow().replace(tzinfo=utc)
+            aTeam.active = True
             aTeam.save()
-            return HttpResponseRedirect('/team/edit/' + aTeam.id.__str__()) # Redirect after POST
+            return HttpResponseRedirect('/team/edit/' + aTeam.id.__str__() + '/') # Redirect after POST
     else:
         form = TeamForm() # An unbound form
 
@@ -263,14 +260,20 @@ def editTeam(request, team_id):
     if len(theTeam) == 1:
         theTeam = theTeam[0]
 
+        #Not allowed to edit inactive Team
+        if theTeam.active == False:
+            HttpResponseRedirect("/")
+
         teamMembers = theTeam.members.all().order_by('lastName', 'firstName')
 
-        notTeamMembers = Client.objects.all().exclude(id__in=teamMembers).order_by('lastName', 'firstName')
+        #notTeamMembers = Client.objects.all().exclude(id__in=teamMembers).order_by('lastName', 'firstName')
+
+        membersNotOnATeam = Client.objects.filter(team__isnull=True)
 
     context = {
         'team': theTeam,
         'teamMembers': teamMembers,
-        'notTeamMembers': notTeamMembers,
+        'notTeamMembers': membersNotOnATeam,
     }
 
     return render(request, 'editTeam.html', context)
@@ -283,13 +286,17 @@ def addTeamMember(request, team_id, client_id):
     if len(theTeam) == 1:
         theTeam = theTeam[0]
 
+        #Not allowed to edit inactive Team
+        if theTeam.active == False:
+            HttpResponseRedirect("/")
+
         theClient = Client.objects.filter(id=client_id)
         if len(theClient) == 1:
             theClient = theClient[0]
 
             theTeam.members.add(theClient)
 
-    return HttpResponseRedirect('/team/edit/' + team_id)
+    return HttpResponseRedirect('/team/edit/' + team_id + '/')
 
 def removeTeamMember(request, team_id, client_id):
     if not request.user.is_authenticated():
@@ -299,10 +306,34 @@ def removeTeamMember(request, team_id, client_id):
     if len(theTeam) == 1:
         theTeam = theTeam[0]
 
+        #Not allowed to edit inactive Team
+        if theTeam.active == False:
+            HttpResponseRedirect("/")
+
         theClient = Client.objects.filter(id=client_id)
         if len(theClient) == 1:
             theClient = theClient[0]
 
             theTeam.members.remove(theClient)
             
-    return HttpResponseRedirect('/team/edit/' + team_id)
+    return HttpResponseRedirect('/team/edit/' + team_id + '/')
+
+def viewTeam(request, team_id):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/")
+
+    theTeam = Team.objects.filter(id=team_id)
+    if len(theTeam) == 1:
+        theTeam = theTeam[0]
+
+        teamMembers = theTeam.members.all().order_by('lastName', 'firstName')
+
+    teamPoints = calculateTeamPoints(theTeam)
+
+    context = {
+        'teamPoints' : teamPoints,
+        'team': theTeam,
+        'teamMembers': teamMembers,
+    }
+
+    return render(request, 'viewTeam.html', context)

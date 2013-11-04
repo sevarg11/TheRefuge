@@ -14,6 +14,11 @@ a:hover{	/* Change link hover color*/
 	text-decoration: none;
 }
 
+.bwWrapper {
+    position:relative;
+    display:block;
+}
+
 .table-hover>tbody>tr:hover>td{	/*Change the table hover color */
 	background-color: #ffd47f;
 	cursor:pointer;
@@ -21,7 +26,7 @@ a:hover{	/* Change link hover color*/
 
 .mainContent {
 	background-color:#dfe4ee;
-	padding-bottom: 100px;
+	padding-bottom: 100px; 
 }
 
 .navbar {
@@ -32,7 +37,7 @@ a:hover{	/* Change link hover color*/
 	background-repeat: repeat-x;
 	max-height:35px;
 }
-
+ 
 .navbar-default {
 	background-color: #161d29;
 	border-color: #161d29;
@@ -71,5 +76,10 @@ a:hover{	/* Change link hover color*/
 	background-repeat: repeat-x;
 	border-color: #c04801;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe680f',endColorstr='#d95101',GradientType=0);
+}
+
+/* Hide the * asterisk next to required fields in forms */
+.asteriskField {
+    display: none;
 }
 

@@ -46,6 +46,7 @@ class Team(models.Model):
     name = models.CharField(max_length=200)
     dateCreated = models.DateTimeField()
     members = models.ManyToManyField('Client')
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
@@ -61,7 +62,7 @@ class Record(models.Model):
     name = models.CharField(max_length=200)
     points = models.IntegerField()
     date = models.DateTimeField()
-    members = models.ManyToManyField('Client', related_name='members')
+    teams = models.ManyToManyField('Team', related_name='teams')
     completedBy = models.ForeignKey('Client', related_name='completedBy')
     submittedBy = models.ForeignKey(User)
 

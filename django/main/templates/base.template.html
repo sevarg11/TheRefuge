@@ -24,7 +24,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/main.css" rel="stylesheet">
     {% block head %}{% endblock %}
-  </head>
+  </head> 
 
   <body>
 
@@ -57,15 +57,15 @@
               </ul>
             </li>
             {% else %}
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/contact/">Contact</a></li>
             {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-            <li><a class="" href="/logout">Logout {{ user.username }}</a></li>
+            <li><a class="" href="/logout/">Logout {{ user.username }}</a></li>
             {% else %}
-            <li><a class="" href="/login">Login</a></li>
+            <li><a class="" href="/login/">Login</a></li>
             {% endif %}
           </ul>
         </div><!--/.nav-collapse -->

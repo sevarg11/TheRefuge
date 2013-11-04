@@ -1,11 +1,84 @@
 {% extends "base.template.html" %}
 {% block title %}Login - The Refuge{% endblock %}
 
+{% block head %}
+<script src="/js/jQuery.BlackAndWhite.js"></script>
+
+{% endblock %}
+
 {% block content %}
 <div class="row mainContent">
     <div class="col-sm-12 col-md-12">
-		<h1>Welcome</h1>
-		<h2>Please Login</h2>
+    </br>
+    	<div id="carousel-example-generic" class="carousel slide"> 
+		  <!-- Indicators -->
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner">
+		    <div class="item active">
+		    	<div class="bwWrapper">
+		      		<img src="/img/skatepark.png" alt="...">
+		      	</div>
+		      <div class="carousel-caption">
+		        Skatepark
+		      </div>
+		    </div>
+		    <div class="item bwWrapper">
+		    	<div class="bwWrapper">
+		      		<img src="/img/ball.png" alt="...">
+		      	</div>
+		      <div class="carousel-caption">
+		        Team Building
+		      </div>
+		    </div>
+		    <div class="item bwWrapper">
+		    	<div class="bwWrapper">
+		      		<img src="/img/camp.png" alt="...">
+		      	</div>
+		      <div class="carousel-caption">
+		        Group Photo
+		      </div>
+		    </div>
+		  </div>
+
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+		    <span class="icon-prev"></span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+		    <span class="icon-next"></span>
+		  </a>
+		</div>
 	</div>
 </div>
+{% endblock %}
+
+{% block foot %}
+<script>
+$(window).load(function(){
+    $('.bwWrapper').BlackAndWhite({
+        hoverEffect : true, // default true
+        // set the path to BnWWorker.js for a superfast implementation
+        webworkerPath : false,
+        // for the images with a fluid width and height 
+        responsive:true,
+        // to invert the hover effect
+        invertHoverEffect: false,
+        // this option works only on the modern browsers ( on IE lower than 9 it remains always 1)
+        intensity:1,
+        speed: { //this property could also be just speed: value for both fadeIn and fadeOut
+            fadeIn: 200, // 200ms for fadeIn animations
+            fadeOut: 800 // 800ms for fadeOut animations
+        },
+        onImageReady:function(img) {
+            // this callback gets executed anytime an image is converted
+        }
+    });
+});
+</script>
 {% endblock %}
